@@ -1365,6 +1365,7 @@ GameObject:
   - component: {fileID: 1740235227}
   - component: {fileID: 1740235226}
   - component: {fileID: 1740235232}
+  - component: {fileID: 1740235233}
   m_Layer: 0
   m_Name: John Connor
   m_TagString: Untagged
@@ -1535,6 +1536,22 @@ MonoBehaviour:
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!208 &1740235233
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740235225}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.5, y: 1, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1900588672
 GameObject:
   m_ObjectHideFlags: 0
@@ -2067,7 +2084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 50
   player: {fileID: 1740235231}
-  fleeDistance: 4
+  fleeDistance: 10
   patrolPoints:
   - {fileID: 1983220218}
   - {fileID: 199348180}
@@ -2081,6 +2098,9 @@ MonoBehaviour:
   safeSpots:
   - {fileID: 578350543}
   - {fileID: 1980860532}
+  maxDistFromDir: 120
+  step: 15
+  fleeLength: 3
 --- !u!195 &2125246815
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -113,14 +113,21 @@ public class BobSPA : MonoBehaviour
     protected virtual void Flee()
     {
         Vector3 fleeDir = transform.position + (transform.position - player.position);
-        agentSmith.SetDestination(fleeDir);
+        SetSafeDestination (fleeDir);
     }
     protected virtual void Chase()
     {
-        agentSmith.SetDestination(player.position);
+        SetSafeDestination(player.position);
     }
     protected virtual void Patrol()
     {
-        agentSmith.SetDestination(patrolPoints[patrolIndex].position);
+        SetSafeDestination(patrolPoints[patrolIndex].position);
     }
+
+    protected void SetSafeDestination(Vector3 newDestination)
+    {
+        if (!agentSmith.hasPath || agentSmith.destination != newDestination)
+            agentSmith.SetDestination(newDestination);
+    }
+
 }
