@@ -21,11 +21,13 @@ namespace BehaviourTrees
             var foo = new Condition(() => prize.activeSelf);
             Leaf isPrizePresent = new Leaf("IsPrizePresent", foo);
 
-            Leaf moveToPrize = new Leaf("MoveToPrize", new ActionStrategy(() => agent.SetDestination(prize.transform.position)));
+            Leaf moveToPrize = new Leaf("MoveToPrize", new ActionStrategy(() => { agent.SetDestination(prize.transform.position); Debug.Log("Go There bish"); }));
 
             Sequence findPrize = new Sequence("FindPrize");
             findPrize.SetstoXD(isPrizePresent);
             findPrize.SetstoXD(moveToPrize);
+
+            Debug.Log(findPrize.children[1].name);
 
             Selector baseSelector = new Selector("Base Selector");
             baseSelector.SetstoXD(findPrize);
@@ -35,8 +37,8 @@ namespace BehaviourTrees
         }
         private void Update()
         {
-            tree.Process();
-            Debug.Log(tree.GetCurrentChildName());
+            var foo = tree.Process();
+            Debug.Log(tree.GetCurrentChildName() + " with a: " + foo);
         }
     }
 }

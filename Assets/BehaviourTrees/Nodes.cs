@@ -9,21 +9,18 @@ namespace BehaviourTrees
 
         public override Status Process()
         {
-            if (currentChild < children.Count)
+            foreach (var child in children)
             {
-                switch (children[currentChild].Process())
+                switch (child.Process())
                 {
                     case Status.Running:
                         return Status.Running;
                     case Status.Success:
-                        Reset();
                         return Status.Success;
                     default:
-                        currentChild++;
-                        return currentChild == children.Count ? Status.Failure : Status.Running;
+                        continue;
                 }
             }
-            Reset();
             return Status.Failure;
         }
     }
@@ -45,7 +42,7 @@ namespace BehaviourTrees
                         return Status.Failure;
                     default:
                         currentChild++;
-                        return currentChild == children.Count ? Status.Running : Status.Success;
+                        return currentChild == children.Count ? Status.Success : Status.Running;
                 }
             }
             Reset();
@@ -121,7 +118,6 @@ namespace BehaviourTrees
                     return status;
                 }
                 currentChild++;
-                continue;
             }
             Reset();
             return Status.Success;

@@ -68,7 +68,7 @@ namespace BehaviourTrees
             agent.SetDestination(target.position);
             entity.LookAt(target);
 
-            if (isPathCalculated == true && agent.remainingDistance > 0.1f)
+            if (isPathCalculated == true && agent.remainingDistance < 0.1f)
             {
                 isPathCalculated = false;
                 currentIndex++;
